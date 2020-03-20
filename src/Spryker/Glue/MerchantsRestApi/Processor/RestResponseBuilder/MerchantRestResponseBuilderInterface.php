@@ -10,7 +10,7 @@ namespace Spryker\Glue\MerchantsRestApi\Processor\RestResponseBuilder;
 use Generated\Shared\Transfer\MerchantStorageTransfer;
 use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 
-interface MerchantsRestResponseBuilderInterface
+interface MerchantRestResponseBuilderInterface
 {
     /**
      * @param \Generated\Shared\Transfer\MerchantStorageTransfer $merchantStorageTransfer
