@@ -7,29 +7,25 @@
 
 namespace Spryker\Glue\MerchantsRestApi\Processor\RestResponseBuilder;
 
-use Generated\Shared\Transfer\MerchantStorageTransfer;
+use ArrayObject;
 use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 
-interface MerchantRestResponseBuilderInterface
+interface MerchantAddressRestResponseBuilderInterface
 {
     /**
      * @param \Generated\Shared\Transfer\MerchantStorageTransfer[] $merchantStorageTransfers
-     * @param string $localeName
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface[]
      */
-    public function createMerchantRestResources(array $merchantStorageTransfers, string $localeName): array;
+    public function createMerchantAddressesRestResources(array $merchantStorageTransfers): array;
 
     /**
-     * @param \Generated\Shared\Transfer\MerchantStorageTransfer $merchantStorageTransfer
-     * @param string $localeName
+     * @param \ArrayObject|\Generated\Shared\Transfer\MerchantStorageProfileAddressTransfer[] $merchantStorageProfileAddressTransfers
+     * @param string $merchantReference
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    public function createMerchantsRestResponse(
-        MerchantStorageTransfer $merchantStorageTransfer,
-        string $localeName
-    ): RestResponseInterface;
+    public function createMerchantAddressesRestResponse(ArrayObject $merchantStorageProfileAddressTransfers, string $merchantReference): RestResponseInterface;
 
     /**
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
