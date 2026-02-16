@@ -52,7 +52,7 @@ class MerchantAddressReader implements MerchantAddressReaderInterface
         }
 
         /**
-         * @var string $merchantReference
+         * @var non-falsy-string $merchantReference
          */
         $merchantReference = $merchantResource->getId();
 
