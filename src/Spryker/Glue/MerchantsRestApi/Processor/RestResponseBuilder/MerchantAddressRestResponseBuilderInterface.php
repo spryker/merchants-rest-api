@@ -27,13 +27,7 @@ interface MerchantAddressRestResponseBuilderInterface
      */
     public function createMerchantAddressesRestResponse(ArrayObject $merchantStorageProfileAddressTransfers, string $merchantReference): RestResponseInterface;
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createMerchantNotFoundErrorResponse(): RestResponseInterface;
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createMerchantIdentifierMissingErrorResponse(): RestResponseInterface;
 }

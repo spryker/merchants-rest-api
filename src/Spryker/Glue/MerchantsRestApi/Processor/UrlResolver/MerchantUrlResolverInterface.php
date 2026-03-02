@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\UrlStorageTransfer;
 
 interface MerchantUrlResolverInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\UrlStorageTransfer $urlStorageTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestUrlResolverAttributesTransfer|null
-     */
     public function resolveMerchantUrl(UrlStorageTransfer $urlStorageTransfer): ?RestUrlResolverAttributesTransfer;
 }

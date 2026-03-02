@@ -31,10 +31,6 @@ class MerchantRestResponseBuilder implements MerchantRestResponseBuilderInterfac
      */
     protected $merchantMapper;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\MerchantsRestApi\Processor\Mapper\MerchantMapperInterface $merchantMapper
-     */
     public function __construct(
         RestResourceBuilderInterface $restResourceBuilder,
         MerchantMapperInterface $merchantMapper
@@ -60,12 +56,6 @@ class MerchantRestResponseBuilder implements MerchantRestResponseBuilderInterfac
         return $merchantRestResources;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStorageTransfer $merchantStorageTransfer
-     * @param string $localeName
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createMerchantsRestResponse(
         MerchantStorageTransfer $merchantStorageTransfer,
         string $localeName
@@ -77,9 +67,6 @@ class MerchantRestResponseBuilder implements MerchantRestResponseBuilderInterfac
             ->addResource($merchantsRestResource);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createMerchantNotFoundErrorResponse(): RestResponseInterface
     {
         return $this->restResourceBuilder
@@ -92,9 +79,6 @@ class MerchantRestResponseBuilder implements MerchantRestResponseBuilderInterfac
             );
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createMerchantIdentifierMissingErrorResponse(): RestResponseInterface
     {
         return $this->restResourceBuilder
@@ -143,12 +127,6 @@ class MerchantRestResponseBuilder implements MerchantRestResponseBuilderInterfac
         return $restResponse;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStorageTransfer $merchantStorageTransfer
-     * @param string $localeName
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     protected function createMerchantsRestResource(
         MerchantStorageTransfer $merchantStorageTransfer,
         string $localeName

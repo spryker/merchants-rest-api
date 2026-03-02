@@ -27,13 +27,6 @@ class MerchantMapper implements MerchantMapperInterface
         $this->merchantRestAttributesMapperPlugins = $merchantRestAttributesMapperPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStorageTransfer $merchantStorageTransfer
-     * @param \Generated\Shared\Transfer\RestMerchantsAttributesTransfer $restMerchantsAttributesTransfer
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\RestMerchantsAttributesTransfer
-     */
     public function mapMerchantStorageTransferToRestMerchantsAttributesTransfer(
         MerchantStorageTransfer $merchantStorageTransfer,
         RestMerchantsAttributesTransfer $restMerchantsAttributesTransfer,
@@ -86,13 +79,6 @@ class MerchantMapper implements MerchantMapperInterface
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStorageTransfer $merchantStorageTransfer
-     * @param \Generated\Shared\Transfer\RestMerchantsAttributesTransfer $restMerchantsAttributesTransfer
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\RestMerchantsAttributesTransfer
-     */
     protected function executeMerchantRestAttributesMapperPlugins(
         MerchantStorageTransfer $merchantStorageTransfer,
         RestMerchantsAttributesTransfer $restMerchantsAttributesTransfer,

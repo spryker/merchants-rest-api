@@ -17,20 +17,11 @@ class MerchantTranslator implements MerchantTranslatorInterface
      */
     protected $glossaryStorageClient;
 
-    /**
-     * @param \Spryker\Glue\MerchantsRestApi\Dependency\Client\MerchantsRestApiToGlossaryStorageClientInterface $glossaryStorageClient
-     */
     public function __construct(MerchantsRestApiToGlossaryStorageClientInterface $glossaryStorageClient)
     {
         $this->glossaryStorageClient = $glossaryStorageClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStorageTransfer $merchantStorageTransfer
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\MerchantStorageTransfer
-     */
     public function translateMerchantStorageTransfer(
         MerchantStorageTransfer $merchantStorageTransfer,
         string $localeName

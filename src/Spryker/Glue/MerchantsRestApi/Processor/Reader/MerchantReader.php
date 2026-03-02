@@ -60,12 +60,6 @@ class MerchantReader implements MerchantReaderInterface
      */
     protected $merchantSearchClient;
 
-    /**
-     * @param \Spryker\Glue\MerchantsRestApi\Dependency\Client\MerchantsRestApiToMerchantStorageClientInterface $merchantStorageClient
-     * @param \Spryker\Glue\MerchantsRestApi\Processor\Translator\MerchantTranslatorInterface $merchantTranslator
-     * @param \Spryker\Glue\MerchantsRestApi\Processor\RestResponseBuilder\MerchantRestResponseBuilderInterface $merchantsRestResponseBuilder
-     * @param \Spryker\Glue\MerchantsRestApi\Dependency\Client\MerchantsRestApiToMerchantSearchClientInterface $merchantSearchClient
-     */
     public function __construct(
         MerchantsRestApiToMerchantStorageClientInterface $merchantStorageClient,
         MerchantTranslatorInterface $merchantTranslator,
@@ -98,11 +92,6 @@ class MerchantReader implements MerchantReaderInterface
         return $this->merchantRestResponseBuilder->createMerchantRestResources($translatedMerchantStorageTransfers, $localeName);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getMerchant(RestRequestInterface $restRequest): RestResponseInterface
     {
         /**
@@ -128,11 +117,6 @@ class MerchantReader implements MerchantReaderInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getMerchants(RestRequestInterface $restRequest): RestResponseInterface
     {
         $merchantSearchRequestTransfer = $this->createMerchantSearchRequest($restRequest);
@@ -183,11 +167,6 @@ class MerchantReader implements MerchantReaderInterface
         return $merchantIds;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Generated\Shared\Transfer\MerchantSearchRequestTransfer
-     */
     protected function createMerchantSearchRequest(RestRequestInterface $restRequest): MerchantSearchRequestTransfer
     {
         $page = $restRequest->getPage();

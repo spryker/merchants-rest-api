@@ -69,9 +69,6 @@ class MerchantAddressesResourceRoutePlugin extends AbstractPlugin implements Res
         return RestMerchantAddressesAttributesTransfer::class;
     }
 
-    /**
-     * @return string
-     */
     public function getParentResourceType(): string
     {
         return MerchantsRestApiConfig::RESOURCE_MERCHANTS;

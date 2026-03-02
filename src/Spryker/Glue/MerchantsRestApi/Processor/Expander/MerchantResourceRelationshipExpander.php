@@ -22,9 +22,6 @@ class MerchantResourceRelationshipExpander implements MerchantResourceRelationsh
      */
     protected $merchantReader;
 
-    /**
-     * @param \Spryker\Glue\MerchantsRestApi\Processor\Reader\MerchantReaderInterface $merchantReader
-     */
     public function __construct(MerchantReaderInterface $merchantReader)
     {
         $this->merchantReader = $merchantReader;

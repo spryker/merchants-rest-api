@@ -20,19 +20,11 @@ class MerchantUrlResolver implements MerchantUrlResolverInterface
      */
     protected $merchantStorageClient;
 
-    /**
-     * @param \Spryker\Glue\MerchantsRestApi\Dependency\Client\MerchantsRestApiToMerchantStorageClientInterface $merchantStorageClient
-     */
     public function __construct(MerchantsRestApiToMerchantStorageClientInterface $merchantStorageClient)
     {
         $this->merchantStorageClient = $merchantStorageClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlStorageTransfer $urlStorageTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestUrlResolverAttributesTransfer|null
-     */
     public function resolveMerchantUrl(UrlStorageTransfer $urlStorageTransfer): ?RestUrlResolverAttributesTransfer
     {
         $urlStorageTransfer->requireFkResourceMerchant();

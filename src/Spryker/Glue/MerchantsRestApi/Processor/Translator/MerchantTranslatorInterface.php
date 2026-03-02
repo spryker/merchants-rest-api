@@ -11,12 +11,6 @@ use Generated\Shared\Transfer\MerchantStorageTransfer;
 
 interface MerchantTranslatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStorageTransfer $merchantStorageTransfer
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\MerchantStorageTransfer
-     */
     public function translateMerchantStorageTransfer(
         MerchantStorageTransfer $merchantStorageTransfer,
         string $localeName

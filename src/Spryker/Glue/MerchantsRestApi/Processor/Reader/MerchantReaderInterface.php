@@ -20,17 +20,7 @@ interface MerchantReaderInterface
      */
     public function getMerchantsResources(array $merchantReferences, string $localeName): array;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getMerchant(RestRequestInterface $restRequest): RestResponseInterface;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getMerchants(RestRequestInterface $restRequest): RestResponseInterface;
 }

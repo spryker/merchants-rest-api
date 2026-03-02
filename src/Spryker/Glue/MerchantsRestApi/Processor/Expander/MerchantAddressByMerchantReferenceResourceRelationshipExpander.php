@@ -17,9 +17,6 @@ class MerchantAddressByMerchantReferenceResourceRelationshipExpander implements 
      */
     protected $merchantAddressReader;
 
-    /**
-     * @param \Spryker\Glue\MerchantsRestApi\Processor\Reader\MerchantAddressReaderInterface $merchantAddressReader
-     */
     public function __construct(MerchantAddressReaderInterface $merchantAddressReader)
     {
         $this->merchantAddressReader = $merchantAddressReader;

@@ -38,11 +38,6 @@ class MerchantsRestApiDependencyProvider extends AbstractBundleDependencyProvide
      */
     public const PLUGINS_MERCHANT_REST_ATTRIBUTES_MAPPER = 'PLUGINS_MERCHANT_REST_ATTRIBUTES_MAPPER';
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -56,11 +51,6 @@ class MerchantsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addMerchantStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_MERCHANT_STORAGE, function (Container $container) {
@@ -72,11 +62,6 @@ class MerchantsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addMerchantSearchClient(Container $container): Container
     {
         $container->set(static::CLIENT_MERCHANT_SEARCH, function (Container $container) {
@@ -88,11 +73,6 @@ class MerchantsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addGlossaryStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_GLOSSARY_STORAGE, function (Container $container) {
@@ -104,11 +84,6 @@ class MerchantsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addMerchantRestAttributesMapperPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_MERCHANT_REST_ATTRIBUTES_MAPPER, function (Container $container) {

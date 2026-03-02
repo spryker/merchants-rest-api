@@ -19,10 +19,5 @@ interface MerchantsRestApiToMerchantStorageClientInterface
      */
     public function get(MerchantStorageCriteriaTransfer $merchantStorageCriteriaTransfer): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStorageCriteriaTransfer $merchantStorageCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantStorageTransfer|null
-     */
     public function findOne(MerchantStorageCriteriaTransfer $merchantStorageCriteriaTransfer): ?MerchantStorageTransfer;
 }

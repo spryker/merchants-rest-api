@@ -30,10 +30,6 @@ class MerchantAddressRestResponseBuilder implements MerchantAddressRestResponseB
      */
     protected $merchantsAddressResourceMapper;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\MerchantsRestApi\Processor\Mapper\MerchantAddressMapperInterface $merchantsAddressResourceMapper
-     */
     public function __construct(
         RestResourceBuilderInterface $restResourceBuilder,
         MerchantAddressMapperInterface $merchantsAddressResourceMapper
@@ -88,9 +84,6 @@ class MerchantAddressRestResponseBuilder implements MerchantAddressRestResponseB
             ->addResource($merchantAddressesRestResource);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createMerchantNotFoundErrorResponse(): RestResponseInterface
     {
         return $this->restResourceBuilder
@@ -103,9 +96,6 @@ class MerchantAddressRestResponseBuilder implements MerchantAddressRestResponseB
             );
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createMerchantIdentifierMissingErrorResponse(): RestResponseInterface
     {
         return $this->restResourceBuilder->createRestResponse()
@@ -147,11 +137,6 @@ class MerchantAddressRestResponseBuilder implements MerchantAddressRestResponseB
         return $merchantAddressesRestResource;
     }
 
-    /**
-     * @param string $merchantReference
-     *
-     * @return string
-     */
     protected function getMerchantAddressesResourceSelfLink(string $merchantReference): string
     {
         return sprintf(

@@ -35,11 +35,6 @@ class MerchantsRestApiToMerchantStorageClientBridge implements MerchantsRestApiT
         return $this->merchantStorageClient->get($merchantStorageCriteriaTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStorageCriteriaTransfer $merchantStorageCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantStorageTransfer|null
-     */
     public function findOne(MerchantStorageCriteriaTransfer $merchantStorageCriteriaTransfer): ?MerchantStorageTransfer
     {
         return $this->merchantStorageClient->findOne($merchantStorageCriteriaTransfer);

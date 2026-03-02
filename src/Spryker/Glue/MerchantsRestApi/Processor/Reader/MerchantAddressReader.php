@@ -26,10 +26,6 @@ class MerchantAddressReader implements MerchantAddressReaderInterface
      */
     protected $merchantsAddressRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Glue\MerchantsRestApi\Dependency\Client\MerchantsRestApiToMerchantStorageClientInterface $merchantStorageClient
-     * @param \Spryker\Glue\MerchantsRestApi\Processor\RestResponseBuilder\MerchantAddressRestResponseBuilderInterface $merchantsAddressRestResponseBuilder
-     */
     public function __construct(
         MerchantsRestApiToMerchantStorageClientInterface $merchantStorageClient,
         MerchantAddressRestResponseBuilderInterface $merchantsAddressRestResponseBuilder
@@ -38,11 +34,6 @@ class MerchantAddressReader implements MerchantAddressReaderInterface
         $this->merchantsAddressRestResponseBuilder = $merchantsAddressRestResponseBuilder;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getMerchantAddresses(RestRequestInterface $restRequest): RestResponseInterface
     {
         $merchantResource = $restRequest->findParentResourceByType(MerchantsRestApiConfig::RESOURCE_MERCHANTS);
