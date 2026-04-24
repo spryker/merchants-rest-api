@@ -1,0 +1,50 @@
+resource:
+    name: MerchantAddresses
+    shortName: merchant-addresses
+    description: 'Storefront merchant addresses'
+
+    provider: Spryker\Glue\MerchantsRestApi\Api\Storefront\Provider\MerchantAddressesStorefrontProvider
+
+    paginationEnabled: false
+
+    operations:
+        - type: GetCollection
+          uriTemplate: /merchants/{merchantReference}/merchant-addresses
+          description: 'Retrieve addresses for a merchant'
+          uriVariables:
+              merchantReference:
+                  fromClass: MerchantsStorefrontResource
+
+    includableIn:
+        - resource: Merchants
+          relationshipName: merchant-addresses
+          uriVariableMappings:
+              merchantReference: merchantReference
+
+    properties:
+        merchantAddressId:
+            type: string
+            identifier: true
+            readable: true
+            writable: false
+            description: 'Merchant address identifier (merchant reference)'
+            openapiContext:
+                example: 'MER000001'
+
+        addresses:
+            type: array
+            readable: true
+            writable: false
+            required: false
+            description: 'Flattened collection of merchant address entries'
+            openapiContext:
+                example:
+                    - idMerchantAddress: 1
+                      address1: 'Julie-Wolfthorn-Straße'
+                      address2: '1'
+                      address3: null
+                      zipCode: '10115'
+                      city: 'Berlin'
+                      phone: '+49 30 208498350'
+                      email: 'spryker@spryker.com'
+                      iso2Code: 'DE'

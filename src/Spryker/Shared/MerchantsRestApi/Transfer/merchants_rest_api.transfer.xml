@@ -59,6 +59,7 @@
         <property name="merchantReference" type="string" description="A unique reference identifier for a merchant."/>
         <property name="urlCollection" type="Url[]" singular="url" description="A collection of URLs."/>
         <property name="merchantProfile" type="MerchantStorageProfile" description="The profile information for a merchant."/>
+        <property name="merchantUrl" type="string"/>
     </transfer>
 
     <transfer name="MerchantStorageProfile">
@@ -107,8 +108,12 @@
     </transfer>
 
     <transfer name="Url">
-        <property name="localeName" type="string" description="The name of a locale, such as &quot;en_US&quot; or &quot;de_DE&quot;."/>
+        <property name="localeName" type="string" description="The name of a locale, such as 'en_US' or 'de_DE'."/>
         <property name="url" type="string" description="A URL for a resource."/>
+    </transfer>
+
+    <transfer name="Locale">
+        <property name="localeName" type="string"/>
     </transfer>
 
     <transfer name="RestUrlResolverAttributes">

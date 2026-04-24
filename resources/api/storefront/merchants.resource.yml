@@ -1,0 +1,178 @@
+resource:
+    name: Merchants
+    shortName: merchants
+    description: 'Storefront merchants'
+
+    provider: Spryker\Glue\MerchantsRestApi\Api\Storefront\Provider\MerchantsStorefrontProvider
+
+    paginationEnabled: false
+
+    operations:
+        - type: Get
+          description: 'Retrieve a merchant by reference'
+
+    includes:
+        - relationshipName: merchant-addresses
+          targetResource: MerchantAddresses
+          autoInclude: true
+          autoIncludeMinDepth: 1
+          uriTemplate: /merchants/{merchantReference}/merchant-addresses
+          uriVariableMappings:
+              merchantReference: merchantReference
+
+        - relationshipName: merchant-opening-hours
+          targetResource: MerchantOpeningHours
+          autoInclude: true
+          autoIncludeMinDepth: 1
+          uriTemplate: /merchants/{merchantReference}/merchant-opening-hours
+          uriVariableMappings:
+              merchantReference: merchantReference
+
+    properties:
+        merchantReference:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            description: 'Unique merchant reference'
+            openapiContext:
+                example: 'MER000001'
+
+        merchantName:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Merchant name'
+            openapiContext:
+                example: 'Spryker'
+
+        merchantUrl:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Merchant storefront URL'
+            openapiContext:
+                example: '/en/merchant/spryker'
+
+        contactPersonRole:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Contact person role'
+            openapiContext:
+                example: 'Customer Service Manager'
+
+        contactPersonTitle:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Contact person title'
+            openapiContext:
+                example: 'Mr'
+
+        contactPersonFirstName:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Contact person first name'
+            openapiContext:
+                example: 'Harald'
+
+        contactPersonLastName:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Contact person last name'
+            openapiContext:
+                example: 'Schmidt'
+
+        contactPersonPhone:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Contact person phone'
+            openapiContext:
+                example: '+49 30 208498350'
+
+        logoUrl:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Merchant logo URL'
+            openapiContext:
+                example: 'https://cdn.spryker.com/logo.png'
+
+        publicEmail:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Public merchant email'
+            openapiContext:
+                example: 'spryker@spryker.com'
+
+        publicPhone:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Public merchant phone'
+            openapiContext:
+                example: '+49 30 208498350'
+
+        description:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Merchant description'
+            openapiContext:
+                example: 'Spryker is the leading composable commerce platform.'
+
+        bannerUrl:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Merchant banner URL'
+            openapiContext:
+                example: 'https://cdn.spryker.com/banner.png'
+
+        deliveryTime:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Estimated delivery time'
+            openapiContext:
+                example: '2-3 business days'
+
+        faxNumber:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Fax number'
+            openapiContext:
+                example: '+49 30 208498351'
+
+        legalInformation:
+            type: array
+            writable: false
+            readable: true
+            required: false
+            description: 'Legal information block'
+            openapiContext:
+                example:
+                    terms: 'Terms and conditions text'
+                    cancellationPolicy: 'Cancellation policy text'
+                    imprint: 'Imprint text'
+                    dataPrivacy: 'Data privacy policy text'
