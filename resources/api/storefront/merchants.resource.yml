@@ -11,22 +11,56 @@ resource:
         - type: Get
           description: 'Retrieve a merchant by reference'
 
+        - type: GetCollection
+          uriTemplate: '/merchants'
+          description: 'Retrieve a paginated list of merchants'
+          openapiContext:
+              parameters:
+                  - name: 'page[limit]'
+                    in: query
+                    description: 'Maximum number of merchants per page.'
+                    required: false
+                    schema:
+                        type: integer
+                    example: 10
+                  - name: 'page[offset]'
+                    in: query
+                    description: 'Offset of the first merchant to return (zero-based).'
+                    required: false
+                    schema:
+                        type: integer
+                    example: 0
+
     includes:
         - relationshipName: merchant-addresses
           targetResource: MerchantAddresses
-          autoInclude: true
-          autoIncludeMinDepth: 1
           uriTemplate: /merchants/{merchantReference}/merchant-addresses
           uriVariableMappings:
               merchantReference: merchantReference
+          # autoInclude: eagerly attach merchant-addresses without the client passing `?include=merchant-addresses`.
+          # This mirrors the legacy Glue behaviour where merchant relationships were expanded automatically
+          # whenever a merchant was pulled in alongside another primary resource (e.g. concrete-products).
+          autoInclude: true
+          # autoIncludeMinDepth: only auto-attach when `merchants` itself appears at depth >= 1, i.e. as a
+          # nested include of another primary resource (e.g. `GET /concrete-products?include=merchants`).
+          # On direct `GET /merchants` / `GET /merchants/{ref}` (depth 0) the relationship is NOT auto-attached
+          # so the storefront listing stays lean; clients can still opt-in via `?include=merchant-addresses`.
+          autoIncludeMinDepth: 1
 
         - relationshipName: merchant-opening-hours
           targetResource: MerchantOpeningHours
-          autoInclude: true
-          autoIncludeMinDepth: 1
           uriTemplate: /merchants/{merchantReference}/merchant-opening-hours
           uriVariableMappings:
               merchantReference: merchantReference
+          # autoInclude: eagerly attach merchant-opening-hours without the client passing
+          # `?include=merchant-opening-hours`. Matches legacy Glue behaviour where opening hours were expanded
+          # automatically alongside the parent merchant when merchants appeared as a related resource.
+          autoInclude: true
+          # autoIncludeMinDepth: only auto-attach when `merchants` is included at depth >= 1 (i.e. nested under
+          # another primary resource). Direct `GET /merchants` responses (depth 0) skip this auto-include to
+          # avoid loading opening-hours rows for every merchant in a listing; clients can still opt-in via
+          # `?include=merchant-opening-hours`.
+          autoIncludeMinDepth: 1
 
     properties:
         merchantReference:
@@ -108,7 +142,7 @@ resource:
             required: false
             description: 'Merchant logo URL'
             openapiContext:
-                example: 'https://cdn.spryker.com/logo.png'
+                example: 'https://cdn.acme.com/logo.png'
 
         publicEmail:
             type: string
@@ -117,7 +151,7 @@ resource:
             required: false
             description: 'Public merchant email'
             openapiContext:
-                example: 'spryker@spryker.com'
+                example: 'spryker@acme.com'
 
         publicPhone:
             type: string
@@ -144,7 +178,7 @@ resource:
             required: false
             description: 'Merchant banner URL'
             openapiContext:
-                example: 'https://cdn.spryker.com/banner.png'
+                example: 'https://cdn.acme.com/banner.png'
 
         deliveryTime:
             type: string
@@ -176,3 +210,29 @@ resource:
                     cancellationPolicy: 'Cancellation policy text'
                     imprint: 'Imprint text'
                     dataPrivacy: 'Data privacy policy text'
+
+        pagination:
+            type: array
+            writable: false
+            readable: true
+            required: false
+            description: 'Pagination metadata for the merchant collection. Populated only on the first item of a GET /merchants response and consumed by PaginationLinksResponseSubscriber to emit JSON:API top-level pagination links.'
+            openapiContext:
+                properties:
+                    numFound:
+                        type: integer
+                        example: 42
+                    currentPage:
+                        type: integer
+                        example: 1
+                    maxPage:
+                        type: integer
+                        example: 5
+                    currentItemsPerPage:
+                        type: integer
+                        example: 10
+                example:
+                    numFound: 42
+                    currentPage: 1
+                    maxPage: 5
+                    currentItemsPerPage: 10

@@ -62,6 +62,11 @@
         <property name="merchantUrl" type="string"/>
     </transfer>
 
+    <transfer name="MerchantsStorefrontResourceExpanderContext" strict="true">
+        <property name="merchantStorageTransfers" type="MerchantStorage[]" singular="merchantStorageTransfer"/>
+        <property name="localeName" type="string"/>
+    </transfer>
+
     <transfer name="MerchantStorageProfile">
         <property name="contactPersonRole" type="string" description="The role of a contact person."/>
         <property name="contactPersonTitle" type="string" description="The title of a contact person (e.g., Mr, Ms)."/>
@@ -142,6 +147,21 @@
     <transfer name="MerchantStorageCriteria">
         <property name="merchantIds" type="array" singular="merchantId" description="A collection of unique identifiers for merchants."/>
         <property name="merchantReferences" type="string[]" singular="merchantReference" description="A collection of merchant references."/>
+    </transfer>
+
+    <transfer name="MerchantsStorefrontCriteria" strict="true">
+        <property name="merchantsStorefrontConditions" type="MerchantsStorefrontConditions" description="Filter conditions for storefront merchant reads."/>
+        <property name="pagination" type="Pagination" description="Pagination context (limit/offset) for collection reads."/>
+    </transfer>
+
+    <transfer name="MerchantsStorefrontConditions" strict="true">
+        <property name="merchantReference" type="string" description="A unique reference identifier for a merchant."/>
+        <property name="localeName" type="string" description="The locale name used for translations and locale-aware mapping."/>
+    </transfer>
+
+    <transfer name="Pagination">
+        <property name="limit" type="int"/>
+        <property name="offset" type="int"/>
     </transfer>
 
 </transfers>
