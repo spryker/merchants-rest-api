@@ -37,30 +37,12 @@ resource:
           uriTemplate: /merchants/{merchantReference}/merchant-addresses
           uriVariableMappings:
               merchantReference: merchantReference
-          # autoInclude: eagerly attach merchant-addresses without the client passing `?include=merchant-addresses`.
-          # This mirrors the legacy Glue behaviour where merchant relationships were expanded automatically
-          # whenever a merchant was pulled in alongside another primary resource (e.g. concrete-products).
-          autoInclude: true
-          # autoIncludeMinDepth: only auto-attach when `merchants` itself appears at depth >= 1, i.e. as a
-          # nested include of another primary resource (e.g. `GET /concrete-products?include=merchants`).
-          # On direct `GET /merchants` / `GET /merchants/{ref}` (depth 0) the relationship is NOT auto-attached
-          # so the storefront listing stays lean; clients can still opt-in via `?include=merchant-addresses`.
-          autoIncludeMinDepth: 1
 
         - relationshipName: merchant-opening-hours
           targetResource: MerchantOpeningHours
           uriTemplate: /merchants/{merchantReference}/merchant-opening-hours
           uriVariableMappings:
               merchantReference: merchantReference
-          # autoInclude: eagerly attach merchant-opening-hours without the client passing
-          # `?include=merchant-opening-hours`. Matches legacy Glue behaviour where opening hours were expanded
-          # automatically alongside the parent merchant when merchants appeared as a related resource.
-          autoInclude: true
-          # autoIncludeMinDepth: only auto-attach when `merchants` is included at depth >= 1 (i.e. nested under
-          # another primary resource). Direct `GET /merchants` responses (depth 0) skip this auto-include to
-          # avoid loading opening-hours rows for every merchant in a listing; clients can still opt-in via
-          # `?include=merchant-opening-hours`.
-          autoIncludeMinDepth: 1
 
     properties:
         merchantReference:
