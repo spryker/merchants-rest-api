@@ -15,12 +15,6 @@ resource:
               merchantReference:
                   fromClass: MerchantsStorefrontResource
 
-    includableIn:
-        - resource: Merchants
-          relationshipName: merchant-addresses
-          uriVariableMappings:
-              merchantReference: merchantReference
-
     properties:
         merchantAddressId:
             type: string
