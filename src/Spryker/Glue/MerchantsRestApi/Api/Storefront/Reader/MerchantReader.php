@@ -104,6 +104,37 @@ class MerchantReader implements MerchantReaderInterface
         ];
     }
 
+    /**
+     * @param array<string> $merchantReferences
+     *
+     * @return array<string, \Generated\Api\Storefront\MerchantsStorefrontResource>
+     */
+    public function getMerchantResourcesIndexedByReference(array $merchantReferences, string $localeName): array
+    {
+        if ($merchantReferences === []) {
+            return [];
+        }
+
+        $merchantStorageTransfers = $this->merchantStorageClient->get(
+            (new MerchantStorageCriteriaTransfer())->setMerchantReferences($merchantReferences),
+        );
+
+        $merchantResourcesIndexedByReference = [];
+
+        foreach ($merchantStorageTransfers as $merchantStorageTransfer) {
+            $merchantReference = $merchantStorageTransfer->getMerchantReference();
+
+            if ($merchantReference === null) {
+                continue;
+            }
+
+            $this->translateProfileGlossaryKeys($merchantStorageTransfer, $localeName);
+            $merchantResourcesIndexedByReference[$merchantReference] = $this->buildResource($merchantStorageTransfer, $localeName);
+        }
+
+        return $merchantResourcesIndexedByReference;
+    }
+
     protected function buildResource(MerchantStorageTransfer $merchantStorageTransfer, string $localeName): MerchantsStorefrontResource
     {
         $restMerchantsAttributesTransfer = $this->mapMerchantStorageToRestMerchantsAttributesTransfer(

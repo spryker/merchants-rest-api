@@ -24,6 +24,13 @@ interface MerchantReaderInterface
     public function findMerchantByReference(MerchantsStorefrontCriteriaTransfer $merchantsStorefrontCriteriaTransfer): ?MerchantsStorefrontResource;
 
     /**
+     * @param array<string> $merchantReferences
+     *
+     * @return array<string, \Generated\Api\Storefront\MerchantsStorefrontResource>
+     */
+    public function getMerchantResourcesIndexedByReference(array $merchantReferences, string $localeName): array;
+
+    /**
      * Specification:
      * - Searches merchants using `pagination` (limit/offset) from the criteria, falling back to module defaults.
      * - Loads matching merchant storage data, translates glossary keys, maps to resources and runs expander plugins.
