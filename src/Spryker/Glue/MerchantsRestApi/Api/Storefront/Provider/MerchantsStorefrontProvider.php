@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Spryker\Glue\MerchantsRestApi\Api\Storefront\Provider;
 
+use Generated\Api\Storefront\Merchants\MerchantsPaginationStorefrontObject;
 use Generated\Shared\Transfer\MerchantsStorefrontConditionsTransfer;
 use Generated\Shared\Transfer\MerchantsStorefrontCriteriaTransfer;
 use Spryker\ApiPlatform\State\Provider\AbstractStorefrontProvider;
@@ -72,7 +73,7 @@ class MerchantsStorefrontProvider extends AbstractStorefrontProvider
 
             // Read by Spryker\ApiPlatform\EventSubscriber\PaginationLinksResponseSubscriber from data[0].attributes.pagination
             // to emit JSON:API top-level pagination links (first, last, prev, next).
-            $resources[0]->pagination = $this->calculatePagination($offset, $limit, $totalCount);
+            $resources[0]->pagination = MerchantsPaginationStorefrontObject::fromArray($this->calculatePagination($offset, $limit, $totalCount));
         }
 
         return $resources;

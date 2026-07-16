@@ -181,40 +181,59 @@ resource:
                 example: '+49 30 208498351'
 
         legalInformation:
-            type: array
+            type: object
+            objectName: MerchantLegalInformation
             writable: false
             readable: true
             required: false
             description: 'Legal information block'
-            openapiContext:
-                example:
-                    terms: 'Terms and conditions text'
-                    cancellationPolicy: 'Cancellation policy text'
-                    imprint: 'Imprint text'
-                    dataPrivacy: 'Data privacy policy text'
+            properties:
+                terms:
+                    type: string
+                    description: 'Terms and conditions text.'
+                    openapiContext:
+                        example: 'Terms and conditions text'
+                cancellationPolicy:
+                    type: string
+                    description: 'Cancellation policy text.'
+                    openapiContext:
+                        example: 'Cancellation policy text'
+                imprint:
+                    type: string
+                    description: 'Imprint text.'
+                    openapiContext:
+                        example: 'Imprint text'
+                dataPrivacy:
+                    type: string
+                    description: 'Data privacy policy text.'
+                    openapiContext:
+                        example: 'Data privacy policy text'
 
         pagination:
-            type: array
+            type: object
+            objectName: Pagination
             writable: false
             readable: true
             required: false
             description: 'Pagination metadata for the merchant collection. Populated only on the first item of a GET /merchants response and consumed by PaginationLinksResponseSubscriber to emit JSON:API top-level pagination links.'
-            openapiContext:
-                properties:
-                    numFound:
-                        type: integer
+            properties:
+                numFound:
+                    type: integer
+                    description: 'Total number of items found.'
+                    openapiContext:
                         example: 42
-                    currentPage:
-                        type: integer
+                currentPage:
+                    type: integer
+                    description: 'Current page number.'
+                    openapiContext:
                         example: 1
-                    maxPage:
-                        type: integer
+                maxPage:
+                    type: integer
+                    description: 'Total number of pages.'
+                    openapiContext:
                         example: 5
-                    currentItemsPerPage:
-                        type: integer
+                currentItemsPerPage:
+                    type: integer
+                    description: 'Number of items per page.'
+                    openapiContext:
                         example: 10
-                example:
-                    numFound: 42
-                    currentPage: 1
-                    maxPage: 5
-                    currentItemsPerPage: 10
