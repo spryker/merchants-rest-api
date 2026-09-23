@@ -10,6 +10,9 @@ resource:
     operations:
         - type: Get
           description: 'Retrieve a merchant by reference'
+          extraProperties:
+              notFoundCode: '3501'
+              notFoundMessage: 'Merchant not found.'
           openapiContext:
               responses:
                   200:
