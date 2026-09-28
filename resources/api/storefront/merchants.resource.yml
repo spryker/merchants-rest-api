@@ -80,7 +80,8 @@ resource:
             writable: false
             readable: true
             required: false
-            description: 'Merchant storefront URL'
+            responseOptional: true
+            description: "Merchant storefront URL. Resolved from the merchant's published URL entry, so a merchant whose storefront page has not been published carries none."
             openapiContext:
                 example: '/en/merchant/spryker'
 
@@ -227,6 +228,7 @@ resource:
             writable: false
             readable: true
             required: false
+            collectionOnly: true
             description: 'Pagination metadata for the merchant collection. Populated only on the first item of a GET /merchants response and consumed by PaginationLinksResponseSubscriber to emit JSON:API top-level pagination links.'
             properties:
                 numFound:
